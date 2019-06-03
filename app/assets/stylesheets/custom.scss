@@ -1,10 +1,10 @@
-@import "bootstrap-sprockets";
 @import "bootstrap";
 
 /* universal */
 $gray-medium-light: #eaeaea;
 $gray: #555;
 $gray-darker: #222;
+$gray-light: #7f8fa6;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -13,7 +13,7 @@ $gray-darker: #222;
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 100px;
 }
 
 section {
@@ -165,8 +165,8 @@ input {
 }
 
 .field_with_errors {
-  @extend .has-error;
+  //@extend .has-error;
   .form-control {
-    color: $state-danger-text;
+    color: #c23616;
   }
 }
