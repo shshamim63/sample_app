@@ -3,7 +3,8 @@ require 'test_helper'
 class MicropostTest < ActiveSupport::TestCase
 
   def setup
-    @user = users(:michael)
+    @user = User.create(name: "Example User", email: "user@example.com",
+                     password: "foobar", password_confirmation: "foobar")
     @micropost = @user.microposts.build(content: "Lorem ipsum")
   end
 
@@ -26,5 +27,12 @@ class MicropostTest < ActiveSupport::TestCase
   end
   test "order should be most recent first" do
     assert_equal microposts(:most_recent), Micropost.first
+  end
+
+  test "associated microposts should be destroyed" do
+    @user.microposts.create!(content: "Lorem ipsum")
+    assert_difference 'Micropost.count', -1 do
+      @user.destroy
+    end
   end
 end
